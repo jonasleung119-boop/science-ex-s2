@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Science Lab Explorer — Classroom Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <span class="brand-icon" aria-hidden="true">⚗️</span>
+        <div>
+          <h1>Science Lab Explorer</h1>
+          <span class="brand-sub">Live Visual Demo</span>
+        </div>
+      </a>
+
+      <nav class="top-nav" aria-label="Presentation sections">
+        <a href="#exp1" class="nav-pill">1. Coke &amp; Mentos</a>
+        <a href="#exp2" class="nav-pill">2. CuSO₄ + HCl + Al</a>
+        <a href="#summary" class="nav-pill">3. Comparison</a>
+      </nav>
+
+      <div class="header-actions">
+        <span class="shortcut-hint" title="Keyboard shortcuts: Space = Play, ←/→ = Step">Keys: Space / ← →</span>
+        <button type="button" class="btn btn-ghost btn-sm" id="fullscreen-btn" title="Toggle Fullscreen">⛶ Fullscreen</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Compact Visual Title Banner -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow">Physical vs. Chemical Reactions</div>
+          <h2>Same Bubbles. <span class="grad-text">Different Science.</span></h2>
+        </div>
+
+        <div class="hero-cards">
+          <a href="#exp1" class="jump-card physical">
+            <div class="jump-top">
+              <span class="tag tag-phys">Experiment 1 • Physical</span>
+              <span class="jump-arrow">↓</span>
+            </div>
+            <h3>Coke &amp; Mentos</h3>
+            <div class="mini-formula">CO₂ (trapped) ➔ CO₂ (free)</div>
+          </a>
+
+          <a href="#exp2" class="jump-card chemical">
+            <div class="jump-top">
+              <span class="tag tag-chem">Experiment 2 • Chemical</span>
+              <span class="jump-arrow">↓</span>
+            </div>
+            <h3>CuSO₄ + HCl + Al + 🔥</h3>
+            <div class="mini-formula">Cu↓ + H₂↑ + Heat + Flame</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIMENT 1: COKE & MENTOS -->
+    <section id="exp1" class="lab-section">
+      <div class="container">
+        <div class="section-top">
+          <div>
+            <span class="tag tag-phys">Experiment 1 • Physical Change</span>
+            <h2>Coke &amp; Mentos Geyser</h2>
+          </div>
+          <div class="visual-chips">
+            <span class="v-chip">🫧 No New Molecules</span>
+            <span class="v-chip">🕳️ Microscopic Pits</span>
+            <span class="v-chip">🚀 Gas Escapes Fast</span>
+          </div>
+        </div>
+
+        <div class="lab-panel">
+          <div class="stage-grid">
+            <div class="canvas-box">
+              <div class="canvas-hud">
+                <span class="hud-badge" id="exp1-status">Ready</span>
+                <span class="hud-metric">Peak: <strong id="exp1-height">0.0 m</strong></span>
+              </div>
+              <canvas id="exp1-macro" width="540" height="420" aria-label="Coke and Mentos bottle animation"></canvas>
+              <div class="canvas-label">Lab View</div>
+            </div>
+
+            <div class="canvas-box micro-box">
+              <div class="canvas-hud">
+                <span class="hud-badge micro-badge">🔬 1000× Zoom</span>
+                <span class="hud-metric" id="exp1-micro-state">H₂O Net Traps CO₂</span>
+              </div>
+              <canvas id="exp1-micro" width="440" height="420" aria-label="Microscopic nucleation particle animation"></canvas>
+              <div class="canvas-label">Particle View</div>
+            </div>
+          </div>
+
+          <div class="control-bar">
+            <div class="control-group">
+              <span class="ctrl-label">Mentos: <strong id="mentos-count-label">3</strong></span>
+              <input type="range" id="mentos-count" min="1" max="6" value="3" aria-label="Number of Mentos" />
+            </div>
+
+            <div class="control-group">
+              <span class="ctrl-label">Temp:</span>
+              <div class="seg-group" role="group" aria-label="Soda temperature">
+                <button type="button" class="seg-btn" data-temp="cold">❄️ 4°C</button>
+                <button type="button" class="seg-btn active" data-temp="room">🌡️ 22°C</button>
+                <button type="button" class="seg-btn" data-temp="warm">☀️ 35°C</button>
+              </div>
+            </div>
+
+            <div class="action-group">
+              <button type="button" class="btn btn-phys btn-lg" id="exp1-drop-btn">▶ Drop Mentos</button>
+              <button type="button" class="btn btn-ghost" id="exp1-reset-btn">↺ Reset</button>
+            </div>
+          </div>
+
+          <div class="mini-steps-grid">
+            <div class="m-step" id="e1-step-1">
+              <div class="m-step-num">1</div>
+              <div>
+                <strong>Sinks Fast</strong>
+                <span>Heavy mint drops to bottom</span>
+              </div>
+            </div>
+            <div class="m-step" id="e1-step-2">
+              <div class="m-step-num">2</div>
+              <div>
+                <strong>Pits Break H₂O Net</strong>
+                <span>Rough surface frees trapped CO₂</span>
+              </div>
+            </div>
+            <div class="m-step" id="e1-step-3">
+              <div class="m-step-num">3</div>
+              <div>
+                <strong>Narrow Neck Jet</strong>
+                <span>Rising bubbles push soda up</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIMENT 2: CuSO4 + HCl + Al + LIGHTER -->
+    <section id="exp2" class="lab-section alt-section">
+      <div class="container">
+        <div class="section-top">
+          <div>
+            <span class="tag tag-chem">Experiment 2 • Chemical Reaction</span>
+            <h2>CuSO₄ + HCl (~25%) + Al + Lighter</h2>
+          </div>
+          <div class="safety-pill" role="note">
+            ⚠️ 25% HCl &amp; H₂ Flame: Teacher Demo Only
+          </div>
+        </div>
+
+        <div class="lab-panel">
+          <div class="stage-grid">
+            <div class="canvas-box">
+              <div class="canvas-hud">
+                <span class="hud-badge chem-badge" id="exp2-status">Step 1 / 4</span>
+                <div class="hud-metrics-pair">
+                  <span class="hud-metric" id="exp2-solution">Blue Cu²⁺</span>
+                  <span class="hud-metric temp-metric" id="exp2-temp">22°C</span>
+                </div>
+              </div>
+              <canvas id="exp2-macro" width="540" height="420" aria-label="CuSO4, HCl, Aluminum, and lighter reaction animation"></canvas>
+              <div class="canvas-label">Lab View</div>
+            </div>
+
+            <div class="canvas-box micro-box">
+              <div class="canvas-hud">
+                <span class="hud-badge micro-badge">⚛️ Atom View</span>
+                <span class="hud-metric" id="exp2-micro-state">Blue Cu²⁺ Ions</span>
+              </div>
+              <canvas id="exp2-micro" width="440" height="420" aria-label="Atomic electron transfer and gas formation animation"></canvas>
+              <div class="canvas-label">Particle View</div>
+            </div>
+          </div>
+
+          <!-- Particle Legend for Screen Audience -->
+          <div class="atom-legend" aria-label="Particle color key">
+            <span class="leg-item"><i class="dot dot-cu2"></i> Cu²⁺ (Blue)</span>
+            <span class="leg-item"><i class="dot dot-cucl"></i> [CuCl₄]²⁻ (Green)</span>
+            <span class="leg-item"><i class="dot dot-cu"></i> Cu Solid (Brown)</span>
+            <span class="leg-item"><i class="dot dot-e"></i> e⁻ Electrons</span>
+            <span class="leg-item"><i class="dot dot-h2"></i> H₂ Gas</span>
+            <span class="leg-item"><i class="dot dot-o2"></i> O₂ Air</span>
+          </div>
+
+          <!-- Presenter Controls -->
+          <div class="exp2-controls">
+            <div class="timeline-steps" role="group" aria-label="Experiment 2 steps">
+              <button type="button" class="t-step active" data-step="1">
+                <span class="t-num">1</span>
+                <span class="t-title">CuSO₄</span>
+                <span class="t-sub">Blue Cu²⁺</span>
+              </button>
+              <button type="button" class="t-step" data-step="2">
+                <span class="t-num">2</span>
+                <span class="t-title">+ 25% HCl</span>
+                <span class="t-sub">Strips Al₂O₃</span>
+              </button>
+              <button type="button" class="t-step" data-step="3">
+                <span class="t-num">3</span>
+                <span class="t-title">+ Al Foil</span>
+                <span class="t-sub">Cu↓ + H₂↑ + Heat</span>
+              </button>
+              <button type="button" class="t-step" data-step="4">
+                <span class="t-num">4</span>
+                <span class="t-title">+ Lighter</span>
+                <span class="t-sub">H₂ POP! 💥</span>
+              </button>
+            </div>
+
+            <div class="action-group">
+              <button type="button" class="btn btn-chem btn-lg" id="exp2-auto-btn">▶ Play All</button>
+              <button type="button" class="btn btn-secondary" id="exp2-next-btn">Next →</button>
+              <button type="button" class="btn btn-ghost" id="exp2-reset-btn" title="Reset">↺</button>
+            </div>
+          </div>
+
+          <div class="eq-strip" id="exp2-eq-strip">
+            <div class="eq-pill active" data-eq="1">
+              <code>CuSO₄(aq)</code> <span>Blue Cu²⁺ ions</span>
+            </div>
+            <div class="eq-pill" data-eq="2">
+              <code>Cu²⁺ + 4Cl⁻ → [CuCl₄]²⁻</code> <span>Green + removes Al₂O₃</span>
+            </div>
+            <div class="eq-pill" data-eq="3">
+              <code>Al + Cu²⁺ → Cu↓</code> &amp; <code>Al + H⁺ → H₂↑</code> <span>Copper + H₂ gas</span>
+            </div>
+            <div class="eq-pill" data-eq="4">
+              <code>2H₂ + O₂ → 2H₂O</code> <span>POP! + green Cu flame</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL SCREEN SUMMARY (NO QUIZ) -->
+    <section id="summary" class="lab-section">
+      <div class="container">
+        <div class="section-top">
+          <div>
+            <span class="tag tag-neutral">Key Takeaway</span>
+            <h2>Physical vs. Chemical at a Glance</h2>
+          </div>
+        </div>
+
+        <div class="compare-cards">
+          <div class="cmp-col phys-col">
+            <div class="cmp-head">
+              <h3>🥤 Exp 1: Coke &amp; Mentos</h3>
+              <span class="tag tag-phys">Physical</span>
+            </div>
+            <div class="cmp-row"><span>New Substance?</span><strong>❌ None (Still Coke + CO₂)</strong></div>
+            <div class="cmp-row"><span>Why Gas Escapes</span><strong>🕳️ Rough Mentos Pits</strong></div>
+            <div class="cmp-row"><span>Temperature</span><strong>❄️ No Heat Made</strong></div>
+            <div class="cmp-row"><span>Gas Behavior</span><strong>🫧 Non-flammable CO₂</strong></div>
+          </div>
+
+          <div class="cmp-col chem-col">
+            <div class="cmp-head">
+              <h3>⚗️ Exp 2: CuSO₄ + HCl + Al</h3>
+              <span class="tag tag-chem">Chemical</span>
+            </div>
+            <div class="cmp-row"><span>New Substance?</span><strong>✅ Cu, Al³⁺, H₂, H₂O</strong></div>
+            <div class="cmp-row"><span>Why Gas Forms</span><strong>⚡ Al + H⁺ Redox Reaction</strong></div>
+            <div class="cmp-row"><span>Temperature</span><strong>🔥 Exothermic (72°C+)</strong></div>
+            <div class="cmp-row"><span>Gas Behavior</span><strong>💥 Flammable H₂ POP!</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
